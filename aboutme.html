@@ -13,17 +13,18 @@
     --accent: #7eb8ff;
     --accent2: #c084fc;
     --accent3: #f472b6;
-    --star: #e2e8ff;
     --text: #e8eeff;
     --muted: rgba(232,238,255,0.45);
-    --nebula1: rgba(96,60,180,0.18);
-    --nebula2: rgba(30,80,180,0.13);
     --glow: 0 0 40px rgba(126,184,255,0.15);
   }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background: var(--bg);
     color: var(--text);
@@ -32,7 +33,6 @@
     overflow-x: hidden;
   }
 
-  /* ── STARFIELD CANVAS ── */
   #starfield {
     position: fixed;
     inset: 0;
@@ -40,7 +40,6 @@
     pointer-events: none;
   }
 
-  /* ── NEBULA LAYERS ── */
   .nebula {
     position: fixed;
     border-radius: 50%;
@@ -49,33 +48,46 @@
     z-index: 0;
   }
   .nebula-1 {
-    width: 700px; height: 500px;
-    top: -100px; left: -200px;
+    width: 700px;
+    height: 500px;
+    top: -100px;
+    left: -200px;
     background: radial-gradient(ellipse, rgba(96,60,180,0.22), transparent 70%);
     animation: nebulaFloat 20s ease-in-out infinite;
   }
   .nebula-2 {
-    width: 600px; height: 600px;
-    bottom: -150px; right: -150px;
+    width: 600px;
+    height: 600px;
+    bottom: -150px;
+    right: -150px;
     background: radial-gradient(ellipse, rgba(30,80,200,0.18), transparent 70%);
     animation: nebulaFloat 25s ease-in-out infinite reverse;
   }
   .nebula-3 {
-    width: 400px; height: 300px;
-    top: 40%; left: 40%;
+    width: 400px;
+    height: 300px;
+    top: 40%;
+    left: 40%;
     background: radial-gradient(ellipse, rgba(180,60,120,0.1), transparent 70%);
     animation: nebulaFloat 18s ease-in-out infinite 5s;
   }
   @keyframes nebulaFloat {
-    0%,100% { transform: translate(0,0) scale(1); }
-    33%      { transform: translate(30px,-20px) scale(1.05); }
-    66%      { transform: translate(-20px,30px) scale(0.97); }
+  0%,100% {
+    transform: translate(0,0) scale(1);
+  }
+  33% {
+    transform: translate(30px,-20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px,30px) scale(0.97);
+  }
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     display: flex;
     justify-content: space-between;
@@ -94,7 +106,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
@@ -107,15 +123,20 @@
   .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -3px; left: 0;
-    width: 0; height: 1px;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
     background: var(--accent);
     transition: width 0.3s;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
 
-  /* ── SECTIONS ── */
   section {
     position: relative;
     z-index: 2;
@@ -124,19 +145,16 @@
     margin: 0 auto;
   }
 
-  /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 8rem;
+    padding: 8rem 8rem 0;
     max-width: 100%;
-    padding-left: 8rem;
-    padding-right: 8rem;
     position: relative;
+    z-index: 2;
   }
-
   .hero-eyebrow {
     font-family: 'Orbitron', monospace;
     font-size: 0.68rem;
@@ -156,7 +174,6 @@
     color: var(--accent2);
     animation: twinkle 2s ease-in-out infinite;
   }
-
   .hero-name {
     font-family: 'Orbitron', monospace;
     font-weight: 900;
@@ -167,26 +184,28 @@
     opacity: 0;
     animation: fadeUp 0.8s 0.35s forwards;
   }
-  .hero-name .first { color: var(--text); }
+  .hero-name .first {
+    color: var(--text);
+  }
   .hero-name .last {
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 55%, var(--accent3) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
   }
-
   .hero-sub {
     font-size: 1.05rem;
     color: var(--muted);
     max-width: 560px;
     line-height: 1.8;
-    margin-bottom: 2.5rem;
-    margin-top: 1.2rem;
+    margin: 1.2rem 0 2.5rem;
     opacity: 0;
     animation: fadeUp 0.8s 0.5s forwards;
   }
-  .hero-sub strong { color: var(--text); font-weight: 500; }
-
+  .hero-sub strong {
+    color: var(--text);
+    font-weight: 500;
+  }
   .hero-badges {
     display: flex;
     flex-wrap: wrap;
@@ -212,7 +231,6 @@
     background: rgba(126,184,255,0.1);
     box-shadow: 0 0 16px rgba(126,184,255,0.15);
   }
-
   .hero-cta {
     display: flex;
     gap: 1rem;
@@ -257,39 +275,35 @@
     box-shadow: 0 0 20px rgba(192,132,252,0.2);
   }
 
-  /* Orbiting planet decoration */
   .planet-wrap {
     position: absolute;
     right: 7rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 280px; height: 280px;
+    width: 280px;
+    height: 280px;
     opacity: 0;
     animation: fadeIn 1.5s 0.8s forwards;
   }
   .planet {
-    width: 180px; height: 180px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%,
-      rgba(192,132,252,0.6),
-      rgba(96,60,200,0.5) 40%,
-      rgba(10,10,60,0.9) 80%
-    );
-    box-shadow:
-      inset -20px -10px 40px rgba(0,0,0,0.6),
-      0 0 60px rgba(126,184,255,0.15),
-      0 0 120px rgba(192,132,252,0.08);
+    background: radial-gradient(circle at 35% 30%, rgba(192,132,252,0.6), rgba(96,60,200,0.5) 40%, rgba(10,10,60,0.9) 80%);
+    box-shadow: inset -20px -10px 40px rgba(0,0,0,0.6), 0 0 60px rgba(126,184,255,0.15), 0 0 120px rgba(192,132,252,0.08);
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
     animation: planetSpin 30s linear infinite;
   }
-  /* Ring */
   .planet-ring {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%) rotateX(75deg);
-    width: 280px; height: 280px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     border: 2px solid rgba(126,184,255,0.2);
     box-shadow: 0 0 20px rgba(126,184,255,0.1);
@@ -301,25 +315,27 @@
     border-radius: 50%;
     border: 1px solid rgba(192,132,252,0.15);
   }
-  /* Orbiting moon */
   .moon-orbit {
     position: absolute;
-    top: 50%; left: 50%;
-    width: 260px; height: 260px;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 260px;
     margin: -130px 0 0 -130px;
     animation: moonOrbit 8s linear infinite;
   }
   .moon {
-    width: 18px; height: 18px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #e2e8ff, #8899cc);
     position: absolute;
-    top: 0; left: 50%;
+    top: 0;
+    left: 50%;
     margin-left: -9px;
     box-shadow: 0 0 12px rgba(200,220,255,0.5);
   }
 
-  /* ── SECTION LABELS ── */
   .section-label {
     font-family: 'Orbitron', monospace;
     font-size: 0.65rem;
@@ -331,7 +347,11 @@
     align-items: center;
     gap: 0.8rem;
   }
-  .section-label::before { content: '✦'; font-size: 0.55rem; color: var(--accent); }
+  .section-label::before {
+    content: '✦';
+    font-size: 0.55rem;
+    color: var(--accent);
+  }
   .section-title {
     font-family: 'Orbitron', monospace;
     font-weight: 800;
@@ -341,7 +361,6 @@
     letter-spacing: -0.01em;
   }
 
-  /* ── GLASS CARD ── */
   .glass-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -355,7 +374,9 @@
   .glass-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(126,184,255,0.3), transparent);
   }
@@ -365,16 +386,26 @@
     transform: translateY(-5px);
   }
 
-  /* ── ABOUT ── */
   #about .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: start;
   }
-  .about-text { line-height: 1.95; color: var(--muted); font-size: 0.97rem; }
-  .about-text strong { color: var(--text); font-weight: 500; }
-  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .about-text {
+    line-height: 1.95;
+    color: var(--muted);
+    font-size: 0.97rem;
+  }
+  .about-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
   .stat-box {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -394,8 +425,13 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
-  .stat-box:hover { border-color: rgba(126,184,255,0.25); box-shadow: var(--glow); }
-  .stat-box:hover::after { opacity: 1; }
+  .stat-box:hover {
+    border-color: rgba(126,184,255,0.25);
+    box-shadow: var(--glow);
+  }
+  .stat-box:hover::after {
+    opacity: 1;
+  }
   .stat-num {
     font-family: 'Orbitron', monospace;
     font-size: 2.2rem;
@@ -406,9 +442,12 @@
     line-height: 1;
     margin-bottom: 0.4rem;
   }
-  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
 
-  /* ── SKILLS ── */
   #skills .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -422,7 +461,11 @@
     margin-bottom: 1.1rem;
     text-transform: uppercase;
   }
-  .skill-pill-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
   .skill-pill {
     padding: 0.38rem 0.9rem;
     border-radius: 100px;
@@ -439,7 +482,6 @@
     box-shadow: 0 0 12px rgba(126,184,255,0.12);
   }
 
-  /* ── PROJECTS ── */
   #projects .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -458,12 +500,14 @@
   .project-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
     opacity: 0;
     transition: opacity 0.35s;
   }
-  /* Star shimmer bg */
   .project-card::after {
     content: '';
     position: absolute;
@@ -476,8 +520,13 @@
     box-shadow: 0 8px 60px rgba(0,0,15,0.6), var(--glow);
     transform: translateY(-7px);
   }
-  .project-card:hover::before { opacity: 1; }
-  .project-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .project-card:hover::before {
+    opacity: 1;
+  }
+  .project-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
   .project-title {
     font-family: 'Orbitron', monospace;
     font-weight: 700;
@@ -486,8 +535,17 @@
     color: var(--text);
     letter-spacing: 0.02em;
   }
-  .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.4rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 1.4rem;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
   .project-tag {
     padding: 0.22rem 0.7rem;
     border-radius: 100px;
@@ -509,7 +567,6 @@
     font-family: 'Orbitron', monospace;
   }
 
-  /* ── HACKATHON ── */
   .hackathon-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -527,7 +584,10 @@
   .hackathon-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent3), var(--accent2));
     opacity: 0;
     transition: opacity 0.3s;
@@ -537,22 +597,47 @@
     box-shadow: 0 0 40px rgba(244,114,182,0.1);
     transform: translateY(-4px);
   }
-  .hackathon-card:hover::before { opacity: 1; }
-  .hack-icon { font-size: 3rem; flex-shrink: 0; }
+  .hackathon-card:hover::before {
+    opacity: 1;
+  }
+  .hack-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+  }
   .hack-title {
     font-family: 'Orbitron', monospace;
     font-weight: 700;
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
   }
-  .hack-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .hack-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
 
-  /* ── CONTACT ── */
-  #contact { text-align: center; }
-  #contact .section-label { justify-content: center; }
-  #contact .section-title { margin-bottom: 1rem; }
-  #contact > p { color: var(--muted); margin-bottom: 2.8rem; max-width: 440px; margin-left: auto; margin-right: auto; font-size: 1rem; line-height: 1.7; }
-  .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+  #contact {
+    text-align: center;
+  }
+  #contact .section-label {
+    justify-content: center;
+  }
+  #contact .section-title {
+    margin-bottom: 1rem;
+  }
+  #contact > p {
+    color: var(--muted);
+    margin: 0 auto 2.8rem;
+    max-width: 440px;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
   .contact-link {
     display: flex;
     align-items: center;
@@ -572,7 +657,10 @@
   .contact-link::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
     background: linear-gradient(90deg, transparent, rgba(126,184,255,0.25), transparent);
   }
   .contact-link:hover {
@@ -581,9 +669,11 @@
     box-shadow: var(--glow);
     transform: translateY(-3px);
   }
-  .contact-link svg { width: 18px; height: 18px; }
+  .contact-link svg {
+    width: 18px;
+    height: 18px;
+  }
 
-  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 2.5rem;
@@ -600,7 +690,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* ── SHOOTING STAR ── */
   .shooting-star {
     position: fixed;
     width: 2px;
@@ -613,23 +702,21 @@
   .shooting-star::after {
     content: '';
     position: absolute;
-    top: 50%; left: 0;
+    top: 50%;
+    left: 0;
     transform: translateY(-50%);
-    width: 80px; height: 1px;
+    width: 80px;
+    height: 1px;
     background: linear-gradient(90deg, white, transparent);
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-  }
-  @keyframes orbFloat {
-    0%,100% { transform: translateY(-50%); }
-    50%      { transform: translateY(calc(-50% - 16px)); }
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
   @keyframes moonOrbit {
     from { transform: rotate(0deg); }
@@ -641,7 +728,7 @@
   }
   @keyframes twinkle {
     0%,100% { opacity: 1; transform: scale(1); }
-    50%      { opacity: 0.4; transform: scale(0.8); }
+    50%     { opacity: 0.4; transform: scale(0.8); }
   }
 
   .reveal {
@@ -649,30 +736,42 @@
     transform: translateY(28px);
     transition: opacity 0.75s ease, transform 0.75s ease;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    #hero { padding-left: 2rem; padding-right: 2rem; }
-    section { padding: 4rem 2rem; }
-    nav { padding: 1rem 2rem; }
-    .planet-wrap { display: none; }
-    #about .about-grid { grid-template-columns: 1fr; }
-    .hackathon-card { flex-direction: column; text-align: center; }
+  #hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  section {
+    padding: 4rem 2rem;
+  }
+  nav {
+    padding: 1rem 2rem;
+  }
+  .planet-wrap {
+    display: none;
+  }
+  #about .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .hackathon-card {
+    flex-direction: column;
+    text-align: center;
+  }
   }
 </style>
 </head>
 <body>
 
-<!-- Stars canvas -->
 <canvas id="starfield"></canvas>
-
-<!-- Nebula -->
 <div class="nebula nebula-1"></div>
 <div class="nebula nebula-2"></div>
 <div class="nebula nebula-3"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">M.AGARWAL</div>
   <ul class="nav-links">
@@ -683,7 +782,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div id="hero">
   <p class="hero-eyebrow">Student · Builder · Explorer</p>
   <h1 class="hero-name">
@@ -692,7 +790,7 @@
   </h1>
   <p class="hero-sub">
     2nd year CSE student at <strong>Jaypee Institute of Information Technology, Sector 62, Noida</strong> &amp;
-    Foundation at <strong>IIT Madras BS Degree in Data Science</strong>.
+    Diploma level at <strong>IIT Madras BS Degree in Data Science</strong> (Foundation cleared ✅).
     Building real things — from web apps to data tools — while exploring the universe of tech.
   </p>
   <div class="hero-badges">
@@ -706,8 +804,6 @@
     <a href="https://github.com/mishika-agarwal-1111" target="_blank" class="btn btn-primary">View Projects ↗</a>
     <a href="https://www.linkedin.com/in/mishika-agarwal-6806993b2" target="_blank" class="btn btn-outline">Get in Touch</a>
   </div>
-
-  <!-- Planet decoration -->
   <div class="planet-wrap">
     <div class="planet-ring"></div>
     <div class="planet"></div>
@@ -715,7 +811,6 @@
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <p class="section-label">001 — About</p>
   <h2 class="section-title reveal">Who Am I</h2>
@@ -724,34 +819,21 @@
       <p class="about-text">
         I'm <strong>Mishika Agarwal</strong>, a 2nd year student pursuing Computer Science &amp; Engineering at
         <strong>Jaypee Institute of Information Technology, Sector 62, Noida</strong> alongside a
-        <strong>BS Degree in Data Science from IIT Madras</strong>.
+        <strong>BS Degree in Data Science from IIT Madras</strong>, where I've cleared the Foundation level and am now in the Diploma level.
         I build things that actually work — full web apps, data pipelines, or quick vibe-coded prototypes.<br><br>
         Right now I'm deep into <strong>data analytics</strong> — SQL, NumPy, Pandas, DBMS, and Streamlit —
         while keeping my web dev sharp with HTML, CSS, Python, Flask, and C/C++. I don't just learn; I <strong>ship</strong>.
       </p>
     </div>
     <div class="about-stats">
-      <div class="stat-box">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Complete Projects</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Hackathon</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Degrees in Parallel</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Technologies</div>
-      </div>
+      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Complete Projects</div></div>
+      <div class="stat-box"><div class="stat-num">4+</div><div class="stat-label">Hackathons</div></div>
+      <div class="stat-box"><div class="stat-num">2</div><div class="stat-label">Degrees in Parallel</div></div>
+      <div class="stat-box"><div class="stat-num">8+</div><div class="stat-label">Technologies</div></div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <p class="section-label">002 — Skills</p>
   <h2 class="section-title reveal">Tech Stack</h2>
@@ -759,42 +841,30 @@
     <div class="glass-card">
       <p class="skill-category">Languages</p>
       <div class="skill-pill-wrap">
-        <span class="skill-pill">C</span>
-        <span class="skill-pill">C++</span>
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">HTML</span>
-        <span class="skill-pill">CSS</span>
+        <span class="skill-pill">C</span><span class="skill-pill">C++</span><span class="skill-pill">Python</span><span class="skill-pill">HTML</span><span class="skill-pill">CSS</span>
       </div>
     </div>
     <div class="glass-card">
-      <p class="skill-category">Web & Backend</p>
+      <p class="skill-category">Web &amp; Backend</p>
       <div class="skill-pill-wrap">
-        <span class="skill-pill">Flask</span>
-        <span class="skill-pill">Vibe Coding</span>
-        <span class="skill-pill">Streamlit</span>
+        <span class="skill-pill">Flask</span><span class="skill-pill">Vibe Coding</span><span class="skill-pill">Streamlit</span>
       </div>
     </div>
     <div class="glass-card">
-      <p class="skill-category">Data & Analytics</p>
+      <p class="skill-category">Data &amp; Analytics</p>
       <div class="skill-pill-wrap">
-        <span class="skill-pill">SQL</span>
-        <span class="skill-pill">NumPy</span>
-        <span class="skill-pill">Pandas</span>
-        <span class="skill-pill">DBMS</span>
+        <span class="skill-pill">SQL</span><span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span><span class="skill-pill">DBMS</span>
       </div>
     </div>
     <div class="glass-card">
       <p class="skill-category">Currently Learning</p>
       <div class="skill-pill-wrap">
-        <span class="skill-pill">Data Analysis</span>
-        <span class="skill-pill">Visualization</span>
-        <span class="skill-pill">ML Basics</span>
+        <span class="skill-pill">Data Analysis</span><span class="skill-pill">Visualization</span><span class="skill-pill">ML Basics</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <p class="section-label">003 — Projects</p>
   <h2 class="section-title reveal">What I've Built</h2>
@@ -804,40 +874,51 @@
       <div class="project-icon">📓</div>
       <h3 class="project-title">Dev-Log</h3>
       <p class="project-desc">A developer journal / logging tool to track what you build, learn, and ship — day by day. Designed for devs who want to stay consistent and reflect on their progress.</p>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Flask</span>
-        <span class="project-tag">HTML/CSS</span>
-      </div>
+      <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">HTML/CSS</span></div>
     </div>
     <div class="project-card">
       <div class="project-badge">COMPLETE</div>
       <div class="project-icon">💰</div>
       <h3 class="project-title">Smart Tax Estimator</h3>
       <p class="project-desc">An intelligent tool that estimates income tax based on user inputs, helping individuals quickly understand their tax liability with a clean, intuitive interface.</p>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Streamlit</span>
-        <span class="project-tag">Pandas</span>
-      </div>
+      <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Streamlit</span><span class="project-tag">Pandas</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">COMPLETE</div>
+      <div class="project-icon">🩸</div>
+      <h3 class="project-title">LifeLink</h3>
+      <p class="project-desc">A blood-management and emergency coordination platform connecting donors, hospitals, and people in urgent need.</p>
+      <div class="project-tags"><span class="project-tag">Web</span><span class="project-tag">Hackathon</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">COMPLETE</div>
+      <div class="project-icon">🌌</div>
+      <h3 class="project-title">3D Interactive Website</h3>
+      <p class="project-desc">An immersive 3D website with interactive scenes and smooth animation.</p>
+      <div class="project-tags"><span class="project-tag">Three.js</span><span class="project-tag">JavaScript</span></div>
+    </div>
+    <div class="project-card">
+      <div class="project-badge">COMPLETE</div>
+      <div class="project-icon">🚀</div>
+      <h3 class="project-title">Portfolio Website</h3>
+      <p class="project-desc">This dark, space-themed portfolio, hosted on GitHub Pages.</p>
+      <div class="project-tags"><span class="project-tag">HTML/CSS</span><span class="project-tag">JavaScript</span></div>
     </div>
   </div>
 </section>
 
-<!-- HACKATHON -->
 <section id="hackathon" style="padding-top:0;">
   <p class="section-label">004 — Experience</p>
-  <h2 class="section-title reveal">Hackathon</h2>
+  <h2 class="section-title reveal">Hackathons</h2>
   <div class="hackathon-card reveal">
     <div class="hack-icon">🏆</div>
     <div>
-      <h3 class="hack-title">Hackathon Participant</h3>
-      <p class="hack-desc">Competed in a hackathon — building, pitching, and shipping under pressure. Experienced real-world problem solving in a team environment with a tight deadline.</p>
+      <h3 class="hack-title">4+ Hackathons Participated</h3>
+      <p class="hack-desc">Competed in 4+ hackathons, building, pitching, and shipping under pressure. Real-world problem solving in team environments with tight deadlines.</p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <p class="section-label">005 — Contact</p>
   <h2 class="section-title reveal">Let's Connect</h2>
@@ -859,19 +940,15 @@
 </section>
 
 <footer>
-  Somewhere in the universe, built by <span>Mishika Agarwal</span> · 2025
+  Somewhere in the universe, built by <span>Mishika Agarwal</span> · 2026
 </footer>
 
 <script>
-// ── Starfield ──
 const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
 let stars = [];
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 resize();
 window.addEventListener('resize', () => { resize(); initStars(); });
 
@@ -907,13 +984,10 @@ function drawStars() {
 }
 drawStars();
 
-// ── Shooting stars ──
 function shootingStar() {
   const el = document.createElement('div');
   el.className = 'shooting-star';
-  const top = Math.random() * 60;
-  const left = Math.random() * 80;
-  el.style.cssText = `top:${top}%;left:${left}%;`;
+  el.style.cssText = `top:${Math.random() * 60}%;left:${Math.random() * 80}%;`;
   document.body.appendChild(el);
   el.animate([
     { transform: 'translateX(0) translateY(0)', opacity: 1 },
@@ -923,7 +997,6 @@ function shootingStar() {
 setInterval(shootingStar, 4000);
 setTimeout(() => setInterval(shootingStar, 6500), 2000);
 
-// ── Scroll reveal ──
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 90);
